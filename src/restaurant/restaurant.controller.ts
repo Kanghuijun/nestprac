@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Param, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Param,
+  Body,
+  Delete,
+  Patch,
+} from '@nestjs/common';
 import { FoodFareRoomDto } from './dto/create-food-fare-room.dto';
 import { RestaurantService } from './restaurant.service';
 
@@ -18,11 +26,31 @@ export class RestaurantController {
 
   @Post('food-fare-room')
   createFoodFareRoom(@Body() dto: FoodFareRoomDto) {
-    return this.restaurantService.createFoodFareRoom(dto);
+    return this.restaurantService.createTest(dto);
   }
 
   @Get('user-list/:id')
   getUsersInRoom(@Param('id') roomId: string) {
-    return `방 ${roomId}에 참여한 유저 목록`;
+    return `방에 참여한 유저 목록`;
+  }
+
+  @Post('test')
+  createTest(@Body() dto: FoodFareRoomDto) {
+    return this.restaurantService.createTest(dto);
+  }
+
+  @Get('test')
+  getTest() {
+    return this.restaurantService.getTest();
+  }
+
+  @Patch('test/:id')
+  patch(@Param('id') id: string, @Body() dto: Partial<FoodFareRoomDto>) {
+    return this.restaurantService.patchTest(Number(id), dto);
+  }
+
+  @Delete('test/:id')
+  deleteTest(@Param('id') id: string) {
+    return this.restaurantService.deleteTest(Number(id));
   }
 }
