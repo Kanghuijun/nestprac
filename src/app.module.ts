@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'testdb',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
+      namingStrategy: new SnakeNamingStrategy(),
     }),
   ],
 })
