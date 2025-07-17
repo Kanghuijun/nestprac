@@ -26,5 +26,5 @@ export class FoodJoinUser {
   foodFareRoom: FoodFareRoom;
 
   @OneToMany(() => FoodOrder, (foodOrder) => foodOrder.foodJoinUser)
-  foodOrders: FoodOrder;
+  foodOrders: FoodOrder[];
 }

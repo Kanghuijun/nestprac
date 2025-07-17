@@ -1,5 +1,3 @@
-import { IsArray, IsBoolean, IsInt, IsString } from 'class-validator';
-
 // class ParticipantDto {
 //   @IsInt()
 //   user_id: number;
@@ -21,15 +19,8 @@ import { IsArray, IsBoolean, IsInt, IsString } from 'class-validator';
 // }
 
 export class userResponseDto {
-  @IsInt()
   user_id: number;
-
-  @IsString()
   name: string;
-
-  @IsInt()
   student_number: number;
-
-  @IsBoolean()
   is_creator: boolean;
 }
